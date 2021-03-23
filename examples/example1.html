@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 1</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="../src/tableToCsv.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Example 1 - jQuery tableToCsv</h3>
+            </div>
+            <div class="col-xs-12">
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Head 1</th>
+                            <th colspan="2">Head 2 and 3</th>
+                            <th>Head 4</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Data 1</td>
+                            <td>Data 2</td>
+                            <td>Data 3</td>
+                            <td>Data 4</td>
+                        </tr>
+                        <tr>
+                            <td>D1</td>
+                            <td>D2</td>
+                            <td>D3</td>
+                            <td>D4</td>
+                        </tr>
+                        <tr>
+                            <td>A1</td>
+                            <td>A2</td>
+                            <td>A3</td>
+                            <td>A4</td>
+                        </tr>
+                        <tr>
+                            <td>X1</td>
+                            <td>X2</td>
+                            <td>X3</td>
+                            <td>X4</td>
+                        </tr>
+                        <tr>
+                            <td>Y1</td>
+                            <td>Y2</td>
+                            <td>Y3</td>
+                            <td>Y4</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-12 text-center">
+                <button onClick="exportCsv()" class="btn btn-info">Export to CSV</button>
+                <button onClick="generateCsv()" class="btn btn-primary">Generate CSV</button>
+            </div>
+            <div class="col-xs-12" style="margin-top: 10px;">
+                <pre id="csv"></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function exportCsv()
+        {
+            $('table').tableToCsv({
+                filename: 'example.csv',
+                colspanMode: 'replicate'
+            });
+        }
+
+        function generateCsv()
+        {
+            let csv = $('table').tableToCsv({
+                colspanMode: 'replicate',
+                autoDownload: false
+            });
+
+            $('#csv').html(csv);
+        }
+    </script>
+
+</body>
+</html>
