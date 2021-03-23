@@ -12,7 +12,7 @@ Basic jQuery plugin to convert HTML Tables to a CSV file.
 
 ### Basic Initialization
 ```
-$('TABLE').columnHeatmap({
+$('TABLE').tableToCsv({
     filename: 'mydata.csv'
 });
 ```
